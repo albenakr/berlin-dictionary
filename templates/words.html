@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% for word in words %}
+    {{ word.word }}
+    {{ word.definition }}
+    {{ word.example }}
+    {{ word.author }}
+    {{ word.score }}
+    {% endfor %}
+
+{% endblock %}
