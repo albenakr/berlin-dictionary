@@ -19,6 +19,10 @@ mongo = PyMongo(app)
 def get_words():
     return render_template("words.html", words=mongo.db.words.find() )
 
+@app.route('/add_word')
+def add_word():
+    return render_template('addword.html')
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 
     port=int(os.getenv("PORT","8080")), 
