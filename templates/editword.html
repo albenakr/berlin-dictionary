@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3> Edit Word </h3>
+
+
+<div class="container">
+	<div class="row">
+		<form action="{{ url_for('insert_word') }}" method="POST" class="col s12">
+
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">mood</i>
+					<input id="word" name="word" type="text" class="validate" required>
+					<label for="word">Word</label>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">library_books</i>
+					<textarea id="definition" name="definition" class="materialize-textarea" required></textarea>
+					<label for="definition">Definition</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">mode_edit</i>
+					<textarea id="example" name="example" class="materialize-textarea"></textarea>
+					<label for="example">Examples</label>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">account_circle</i>
+					<input id="author" name="author" type="text" class="validate">
+					<input id="author" name="author" type="text" class="validate" value="Anonymous">
+					<label for="author">Author</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<button class="btn waves-effect waves-light" type="submit">Submit<i class="material-icons right">send</i></button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}
