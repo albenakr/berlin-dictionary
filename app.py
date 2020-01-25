@@ -23,6 +23,29 @@ def get_words():
 def add_word():
     return render_template('addword.html')
 
+@app.route('/insert_word', methods=['POST'])
+def insert_word():
+    words = mongo.db.words
+    req = request.form.to_dict()
+    print(req)
+    examples = req['example']
+    req['example'] = examples.split('/')
+
+    if req['author'] == "":
+        req['author'] = "Anonymous"
+
+    words.insert_one(req)
+    return redirect(url_for('get_words'))
+
+@app.route('/manage_words')
+def manage_words():
+    return render_template('managewords.html')
+
+@app.route('/edit_word/<word_id>')
+def edit_word(word_id):
+    the_word = mongo.db.tasks.find_one({"_id": ObjectId(word_id)})
+    return render_template('/edit_word', word=the_word)
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 
     port=int(os.getenv("PORT","8080")), 

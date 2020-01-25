@@ -4,14 +4,7 @@
 <head>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<script type="text/javascript">
-		$(document).ready(function() {
-    $('input#input_text, textarea#textarea2').characterCounter();
-  });
-       
-       $('#textarea1').val('New Text');
-  M.textareaAutoResize($('#textarea1'));
-	</script>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 
 </head>
 
@@ -22,7 +15,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"
 		integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+  
+       $('#textarea1').val('New Text');
+  M.textareaAutoResize($('#textarea1'));
+	</script>
 
 </body>
 
