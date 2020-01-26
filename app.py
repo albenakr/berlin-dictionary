@@ -53,13 +53,13 @@ def edit_word(word_id):
 @app.route('/update_word/<word_id>', methods=["POST"])
 def update_word(word_id):
     words = mongo.db.words
-    words.update({"_id": ObjectId(word_id)},
+    words.replace_one({"_id": ObjectId(word_id)},
     {
         'word':request.form.get('word'),
         'definition':request.form.get('definition'),
-        'example':request.form.get('example'),
+        'example':request.form.get('example').split('\\'),
         'author':request.form.get('author'),
-        'score':request.form.get('score')
+        'score': 0
     })
     return redirect(url_for('get_words'))
 
