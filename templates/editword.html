@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3> Add Word </h3>
+<h3> Edit Word </h3>
 <div class="container">
 	<div class="row">
-		<form action="{{ url_for('insert_word') }}" method="POST" class="col s12">
+		<form action="{{ url_for('update_word', word_id=word._id) }}" method="POST" class="col s12">
 
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">mood</i>
-					<input id="word" name="word" type="text" class="validate" required>
+					<input id="word" name="word" type="text" class="validate" value="{{ word.word }}">
 					<label for="word">Word</label>
 				</div>
 			</div>
@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">library_books</i>
-					<textarea id="definition" name="definition" class="materialize-textarea" required></textarea>
+					<textarea id="definition" name="definition" class="materialize-textarea" value="{{ word.definition }}"></textarea>
 					<label for="definition">Definition</label>
 				</div>
 			</div>
@@ -25,7 +25,9 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">mode_edit</i>
-					<textarea id="example" name="example" class="materialize-textarea"></textarea>
+					{% for example in word.example %}
+					<textarea id="example" name="example" class="materialize-textarea" value="{{ example }}"></textarea>
+					{% endfor %}
 					<label for="example">Examples</label>
 					<h7>To add multiple, put '/' in between examples.</h7>
 				</div>
@@ -35,21 +37,26 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">account_circle</i>
-					<input id="author" name="author" type="text" class="validate">
+					<input id="author" name="author" type="text" class="validate" value="{{ word.author }}">
 					<label for="author">Author</label>
 				</div>
 			</div>
 
-			<div class="row hide-score">
+			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">thumb_up</i>
-					<input id="score" name="score" type="text" class="validate" value="0">
-					<label for="score">Score</label>
+					<input disabled id="score" name="score" type="text" class="validate" value="0">
+					<label for="score">Score: {{ word.score }}</label>
 				</div>
 			</div>
 
+
 			<div class="row">
-				<button class="btn waves-effect waves-light" type="submit">Submit<i class="material-icons right">send</i></button>
+				<h7>Please note if you update this word, the score will automatically reset to 0.</h7>
+			</div>
+
+			<div class="row">
+				<button class="btn waves-effect waves-light" type="submit">Update Word<i class="material-icons right">send</i></button>
 			</div>
 		</form>
 	</div>

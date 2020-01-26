@@ -43,9 +43,25 @@ def insert_word():
 @app.route('/manage_word/<word_id>')
 def manage_word(word_id):
     the_word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
-    print(the_word)
     return render_template('manageword.html', word=the_word)
 
+@app.route('/edit_word/<word_id>')
+def edit_word(word_id):
+    the_word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
+    return render_template('editword.html', word=the_word)
+
+@app.route('/update_word/<word_id>', methods=["POST"])
+def update_word(word_id):
+    words = mongo.db.words
+    words.update({"_id": ObjectId(word_id)},
+    {
+        'word':request.form.get('word'),
+        'definition':request.form.get('definition'),
+        'example':request.form.get('example'),
+        'author':request.form.get('author'),
+        'score':request.form.get('score')
+    })
+    return redirect(url_for('get_words'))
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 
