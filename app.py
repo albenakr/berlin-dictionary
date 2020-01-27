@@ -63,6 +63,11 @@ def update_word(word_id):
     })
     return redirect(url_for('get_words'))
 
+@app.route('/delete_word/<word_id>')
+def delete_word(word_id):
+    mongo.db.words.remove({'_id': ObjectId(word_id)})
+    return redirect(url_for('get_words'))
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 
     port=int(os.getenv("PORT","8080")), 
