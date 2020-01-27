@@ -57,7 +57,7 @@ def update_word(word_id):
     {
         'word':request.form.get('word'),
         'definition':request.form.get('definition'),
-        'example':request.form.get('example').split('\\'),
+        'example':request.form.get('example').split('/'),
         'author':request.form.get('author'),
         'score': 0
     })
