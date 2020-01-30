@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, make_response
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -62,6 +62,20 @@ def update_word(word_id):
         'score': 0
     })
     return redirect(url_for('get_words'))
+
+@app.route('/upvote/<word_id>', methods=['POST'])
+def upvote_word(word_id):
+    words = mongo.db.words
+    the_id= {"_id": ObjectId(word_id)}
+    the_word = words.find_one(the_id)
+    #the_score = the_word['score']
+    the_word['score'] = the_word['score'] + 1
+    #print('the_score: ' + str(the_score))
+    words.replace_one(the_id, the_word)
+    return make_response('ok\n')
+
+
+
 
 @app.route('/delete_word/<word_id>')
 def delete_word(word_id):
