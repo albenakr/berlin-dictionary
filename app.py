@@ -30,9 +30,11 @@ def add_word():
 def insert_word():
     words = mongo.db.words
     req = request.form.to_dict()
-    print(req)
     examples = req['example']
     req['example'] = examples.split('/')
+
+    score = req['score']
+    req['score'] = int(score)
 
     if req['author'] == "":
         req['author'] = "Anonymous"
