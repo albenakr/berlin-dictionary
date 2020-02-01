@@ -13,14 +13,31 @@
 						{% for example in word.example %}
 						<p><em>{{ example }}</em></p>
 						{% endfor %}
-					
+
 
 						<p>{{ word.author }}</p>
 					</div>
 					<div class="card-action">
-						<h7>Score: {{ word.score }} </h7>
-						<a class="waves-effect waves-light btn-small">Upvote  <i class="material-icons prefix">thumb_up</i>
-</a>
+						<h7 id='display-score'>Score: {{ word.score }} </h7>
+
+
+						<form action="{{ url_for('upvote_word', word_id=word._id) }}" method="POST">
+
+							<button class="waves-effect waves-light btn-small" id="upvote-btn" type="submit" onclick="updateDisplayedScore()">Upvote
+								<i class="material-icons prefix">thumb_up</i></button>
+						</form>
+
+
+<script>
+
+function updateDisplayedScore() {
+    
+  document.getElementById("display-score").innerHTML = "Score:" + {{ word.score|safe }};
+
+}
+
+</script>
+
 					</div>
 				</div>
 			</div>

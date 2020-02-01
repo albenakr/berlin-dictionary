@@ -7,7 +7,9 @@ Share function
 
 To build:
 >search
->upvote
+>upvote - reloads the page when updating the score + some bug on the first word - shows a random number before the correct one
+    ?commented out Upvote in manageword - do I want an upvote button there?
 >navigation
 >styling
 	
+

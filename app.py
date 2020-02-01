@@ -72,8 +72,7 @@ def upvote_word(word_id):
     the_word['score'] = the_word['score'] + 1
     #print('the_score: ' + str(the_score))
     words.replace_one(the_id, the_word)
-    return make_response('ok\n')
-
+    return redirect(url_for('get_words'))
 
 
 
