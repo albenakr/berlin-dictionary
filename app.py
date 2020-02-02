@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, make_response
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, DESCENDING
 from bson.objectid import ObjectId
 
 from os import path
@@ -19,6 +19,20 @@ mongo = PyMongo(app)
 @app.route('/get_words')
 def get_words():
     return render_template("words.html", words=mongo.db.words.find())
+
+@app.route('/high_score_words')
+def high_score_words():
+    #show only words with score > 5    
+    return render_template("highscorewords.html", popular_words=mongo.db.words.find({'score': {'$gt': 5}}))
+    
+
+@app.route('/score_rank')
+def score_rank():
+    return render_template("scorerank.html", ranked_words = mongo.db.words.find().sort('score', DESCENDING))
+
+@app.route('/alphabetical_order')
+def alphabetical_order():
+    return render_template("alphabeticalorder.html", alpabetical_words = mongo.db.words.find().sort('word'))
 
 
 @app.route('/add_word')
@@ -82,6 +96,27 @@ def upvote_word(word_id):
 def delete_word(word_id):
     mongo.db.words.remove({'_id': ObjectId(word_id)})
     return redirect(url_for('get_words'))
+
+@app.route('/searchpage')
+def searchpage():
+    return render_template("search.html")
+
+
+@app.route('/search/<query>')
+def search(query):
+    query = request.form.get['search_query']
+    print(query)
+    db_results = mongo.db.words.find( { '$text': { '$search': query } } )
+    
+    search_results = []
+    for result in db_results:
+        if result:
+            search_results.append(result)
+            print(search_results) 
+            print(result['author'])           
+        else:
+            print("Sorry, this word doesn't exist in the dictionary.")
+    return render_template('searchresult.html')
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 

@@ -9,10 +9,37 @@
 </head>
 
 <body>
-	<h1>Base File</h1>
-	{% block content %} 
 
-    {% endblock %}
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="{{url_for('get_words')}}" class="brand-logo">The Berlin Dictionary</a>
+				<a href="{{url_for('get_words')}}" data-target="mobile-demo"
+					class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="{{url_for('get_words')}}">Browse Words</a></li>
+
+					<li><a href="{{url_for('add_word')}}">Add Word</a></li>
+					<li><a href="">Manage Words</a></li>
+				</ul>
+
+				<ul class="sidenav" id="mobile-demo">
+					<li><a href="{{url_for('get_words')}}">Browse Words</a></li>
+
+					<li><a href="{{url_for('add_word')}}">Add Word</a></li>
+					<li><a href="">Manage Words</a></li>
+				</ul>
+
+			</div>
+		</nav>
+
+
+	</header>
+
+	{% block content %}
+
+	{% endblock %}
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"
@@ -24,6 +51,9 @@
         $('.modal').modal();
 
   });
+
+      $('.sidenav').sidenav();
+
   
        $('#textarea1').val('New Text');
   M.textareaAutoResize($('#textarea1'));

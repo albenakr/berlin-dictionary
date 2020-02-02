@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block content %}
+
+{% for result in search_results %}
+<div class="container">
+
+
+	<a href="">
+
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title"><strong>{{ result.word }}</strong></span>
+						<p>{{ result.definition }}</p>
+						{% for example in result.example %}
+						<p><em>{{ example }}</em></p>
+						{% endfor %}
+
+
+						<p>{{ result.author }}</p>
+					</div>
+					<div class="card-action">
+						<h7 id='display-score'>Score: {{ result.score }} </h7>
+
+
+						<form action="{{ url_for('upvote_word', word_id=word._id) }}" method="POST">
+
+							<button class="waves-effect waves-purple btn-small" id="upvote-btn" type="submit" onclick="updateDisplayedScore()">Upvote
+								<i class="material-icons prefix">thumb_up</i></button>
+						</form>
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
+
+</div>
+
+
+{% endfor %}
+<div>
+	<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+</div>
+
+{% endblock %}
