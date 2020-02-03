@@ -95,18 +95,10 @@ def delete_word(word_id):
     mongo.db.words.remove({'_id': ObjectId(word_id)})
     return redirect(url_for('get_words'))
 
-@app.route('/searchpage')
-def searchpage():
-    return render_template("search.html")
 
-
-@app.route('/search/<query>')
-def search(query):
-    search_result =[]
-    input = request.form.get['search_query']
-    search_result.append(input)
-    print(search_result)
-    
+@app.route('/search')
+def search():
+    query = request.args.get('search_query')
     return render_template('searchresult.html', db_results = mongo.db.words.find( { '$text': { '$search': query } } ))
 
 if __name__ == '__main__':
