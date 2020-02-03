@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-{% for result in search_results %}
+
+
+{% for result in db_results %}
 <div class="container">
 
 
-	<a href="">
+	<a href="{{ url_for('manage_word', word_id=result._id)}}">
 
 		<div class="row">
 			<div class="col s12 m6">
@@ -23,7 +25,7 @@
 						<h7 id='display-score'>Score: {{ result.score }} </h7>
 
 
-						<form action="{{ url_for('upvote_word', word_id=word._id) }}" method="POST">
+						<form action="{{ url_for('upvote_word', word_id=result._id) }}" method="POST">
 
 							<button class="waves-effect waves-purple btn-small" id="upvote-btn" type="submit" onclick="updateDisplayedScore()">Upvote
 								<i class="material-icons prefix">thumb_up</i></button>
@@ -41,6 +43,14 @@
 </div>
 
 
+<script>
+	function updateDisplayedScore() {
+    
+  document.getElementById("display-score").innerHTML = "Score:" + {{ result.score|safe }};
+
+}
+        
+</script>
 {% endfor %}
 <div>
 	<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>

@@ -29,4 +29,15 @@ print(list(cars))
 With the list() method, we can transform the cursor to a Python list. It loads all data into the memory.
 
 
+ for result in db_results:
+        if result:
+            search_results.append(result)
+            print(search_results) 
+            print(result['author'])           
+        else:
+            print("Sorry, this word doesn't exist in the dictionary.")
 
+search_result =[]
+    input = request.form.get['search_query']
+    search_result.append(input)
+    print(search_result)

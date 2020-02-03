@@ -84,9 +84,7 @@ def upvote_word(word_id):
     words = mongo.db.words
     the_id= {"_id": ObjectId(word_id)}
     the_word = words.find_one(the_id)
-    #the_score = the_word['score']
     the_word['score'] = the_word['score'] + 1
-    #print('the_score: ' + str(the_score))
     words.replace_one(the_id, the_word)
     return redirect(url_for('get_words'))
 
@@ -104,19 +102,12 @@ def searchpage():
 
 @app.route('/search/<query>')
 def search(query):
-    query = request.form.get['search_query']
-    print(query)
-    db_results = mongo.db.words.find( { '$text': { '$search': query } } )
+    search_result =[]
+    input = request.form.get['search_query']
+    search_result.append(input)
+    print(search_result)
     
-    search_results = []
-    for result in db_results:
-        if result:
-            search_results.append(result)
-            print(search_results) 
-            print(result['author'])           
-        else:
-            print("Sorry, this word doesn't exist in the dictionary.")
-    return render_template('searchresult.html')
+    return render_template('searchresult.html', db_results = mongo.db.words.find( { '$text': { '$search': query } } ))
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 
