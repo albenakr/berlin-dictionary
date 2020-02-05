@@ -59,7 +59,7 @@ def insert_word():
 @app.route('/manage_word/<word_id>')
 def manage_word(word_id):
     the_word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
-    return render_template('manageword.html', word=the_word)
+    return render_template('manageword.html', word=the_word, fullUrl=request.url)
 
 @app.route('/edit_word/<word_id>')
 def edit_word(word_id):
@@ -86,7 +86,7 @@ def upvote_word(word_id):
     the_word = words.find_one(the_id)
     the_word['score'] = the_word['score'] + 1
     words.replace_one(the_id, the_word)
-    return redirect(url_for('get_words'))
+    return redirect(url_for('manage_word', word_id=the_word['_id']))
 
 
 
@@ -99,7 +99,11 @@ def delete_word(word_id):
 @app.route('/search')
 def search():
     query = request.args.get('search_query')
-    return render_template('searchresult.html', db_results = mongo.db.words.find( { '$text': { '$search': query } } ))
+    return render_template('searchresult.html', db_results = list(mongo.db.words.find( { '$text': { '$search': query } } )))
+
+@app.route('/manage_words_page')
+def manage_words_page():
+    return render_template("managewordspage.html", words=mongo.db.words.find())
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 

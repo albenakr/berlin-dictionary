@@ -5,7 +5,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
-
+    <title>Berlin Dictionary</title>
 </head>
 
 <body>
@@ -21,14 +21,14 @@
 					<li><a href="{{url_for('get_words')}}">Browse Words</a></li>
 
 					<li><a href="{{url_for('add_word')}}">Add Word</a></li>
-					<li><a href="">Manage Words</a></li>
+					<li><a href="{{url_for('manage_words_page')}}">Manage Words</a></li>
 				</ul>
 
 				<ul class="sidenav" id="mobile-demo">
 					<li><a href="{{url_for('get_words')}}">Browse Words</a></li>
 
 					<li><a href="{{url_for('add_word')}}">Add Word</a></li>
-					<li><a href="">Manage Words</a></li>
+					<li><a href="{{url_for('manage_words_page')}}">Manage Words</a></li>
 				</ul>
 
 			</div>

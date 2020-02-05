@@ -1,6 +1,20 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3> Manage Word </h3>
+<h3> Manage Words </h3>
+
+<div class="nav-wrapper">
+	<form action="{{url_for('search', query=input)}}">
+		<div class="input-field">
+			<input id="search_query" name="search_query" type="search" required>
+			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+			<i class="material-icons">close</i>
+                  <button type="submit">Submit</button>
+
+		</div>
+	</form>
+</div>
+
+<!--  
 
 <div class="container">
 	<div class="row">
@@ -95,5 +109,7 @@
 	</div>
 
 </div>
+
+ -->
 
 {% endblock %}

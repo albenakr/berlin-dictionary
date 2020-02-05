@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
-
+{% if db_results != [] %}
 
 {% for result in db_results %}
+
 <div class="container">
 
 
@@ -31,9 +32,6 @@
 								<i class="material-icons prefix">thumb_up</i></button>
 						</form>
 
-
-
-
 					</div>
 				</div>
 			</div>
@@ -41,6 +39,7 @@
 	</a>
 
 </div>
+
 
 
 <script>
@@ -52,6 +51,19 @@
         
 </script>
 {% endfor %}
+
+{% else %}
+
+<p> Sorry, this word doesn't exist in the dictionary. Would you like to add it? </p>
+
+<div class="col s4">
+	<a href="{{ url_for('add_word') }}" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Add
+		Word</a>
+
+</div>
+
+{% endif %}
+
 <div>
 	<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 </div>
