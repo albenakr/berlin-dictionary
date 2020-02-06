@@ -22,7 +22,6 @@ def get_words():
 
 @app.route('/high_score_words')
 def high_score_words():
-    #show only words with score > 5    
     return render_template("highscorewords.html", popular_words=mongo.db.words.find({'score': {'$gt': 5}}))
     
 
@@ -32,7 +31,7 @@ def score_rank():
 
 @app.route('/alphabetical_order')
 def alphabetical_order():
-    return render_template("alphabeticalorder.html", alpabetical_words = mongo.db.words.find().sort('word'))
+    return render_template("alphabeticalorder.html", alpabetical_words = mongo.db.words.find().collation({ 'locale': "en" }).sort('word'))
 
 
 @app.route('/add_word')

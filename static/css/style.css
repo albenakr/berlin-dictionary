@@ -1,4 +1,6 @@
-
+.card .card-content p {
+   margin-bottom: 10px;
+}
 
 .search-section {
 margin: 50px;
@@ -15,7 +17,8 @@ padding: 0px;
 }
 
 #filters-section{
-    margin: 65px 40px 75px 40px;
+    padding: 75px 40px 85px 40px;
+    background-color: #F0F0F0;
 }
 
 .hide-score {
