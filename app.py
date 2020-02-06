@@ -54,7 +54,7 @@ def insert_word():
         req['author'] = "Anonymous"
 
     words.insert_one(req)
-    return redirect(url_for('get_words'))
+    return render_template('wordadded.html')
 
 @app.route('/manage_word/<word_id>')
 def manage_word(word_id):
@@ -77,7 +77,7 @@ def update_word(word_id):
         'author':request.form.get('author'),
         'score': 0
     })
-    return redirect(url_for('get_words'))
+    return render_template('wordadded.html')
 
 @app.route('/upvote/<word_id>', methods=['POST'])
 def upvote_word(word_id):
@@ -103,7 +103,7 @@ def search():
 
 @app.route('/manage_words_page')
 def manage_words_page():
-    return render_template("managewordspage.html", words=mongo.db.words.find())
+    return render_template("managewordspage.html")
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP","0.0.0.0"), 

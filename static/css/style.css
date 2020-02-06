@@ -37,3 +37,10 @@ display: none;
   padding: 15px;
   border-radius: 4px;
 }
+
+
+
+.word-card:hover {
+   /* offset-x | offset-y | blur-radius | spread-radius | color */
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
