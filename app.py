@@ -92,7 +92,7 @@ def upvote_word(word_id):
 @app.route('/delete_word/<word_id>')
 def delete_word(word_id):
     mongo.db.words.remove({'_id': ObjectId(word_id)})
-    return redirect(url_for('get_words'))
+    return render_template('worddeleted.html')
 
 
 @app.route('/search')

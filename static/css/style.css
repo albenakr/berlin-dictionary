@@ -4,6 +4,8 @@
 
 .search-section {
 margin: 50px;
+align-items: center;
+justify-content: center;
 }
 
 .search-bar {
@@ -12,8 +14,7 @@ padding: 0px;
 }
 
 .search-button {
-    margin: 0px;
-    padding: 0px;
+
 }
 
 #filters-section{
