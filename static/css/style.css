@@ -1,7 +1,7 @@
-.card .card-content p {
-   margin-bottom: 10px;
-}
 
+
+
+/* Search Section */
 .search-section {
 margin: 50px;
 align-items: center;
@@ -12,19 +12,44 @@ justify-content: center;
 margin: 0px;
 padding: 0px;
 }
+#search_query {
+    margin: 0px;
+    height: 40px;
+}
 
+.search-icon {
+    padding: 10px;
+}
 .search-button {
+    height: 40px;
+}
 
+
+/* Filters Section */
+
+.filter-btn{
+width: 150px;
+height: 40px;
+padding: 5px;
 }
 
 #filters-section{
-    padding: 75px 40px 85px 40px;
     background-color: #F0F0F0;
 }
+
+.filter-btns-section {
+    display: flex;
+    padding: 45px 40px 65px 40px;
+
+}
+
+/* Hide Score section when submitting a new word */
 
 .hide-score {
 display: none;
 }
+
+/* Back to Top Button */
 
 #topBtn {
   display: none;
@@ -42,7 +67,12 @@ display: none;
   border-radius: 4px;
 }
 
+/* Word Card */
 
+
+.card .card-content p {
+   margin-bottom: 10px;
+}
 
 .word-card:hover {
    /* offset-x | offset-y | blur-radius | spread-radius | color */
