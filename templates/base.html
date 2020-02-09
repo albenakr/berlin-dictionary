@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
-    <title>Berlin Dictionary</title>
+	<title>Berlin Dictionary</title>
 </head>
 
 <body>
@@ -36,11 +38,17 @@
 
 
 	</header>
+	<main>
+		{% block content %}
 
-	{% block content %}
+		{% endblock %}
+	</main>
 
-	{% endblock %}
-
+	<footer class="page-footer footer-copyright">
+			<div class="container">
+				© 2020 The Berlin Dictionary
+			</div>
+	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"
 		integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>

@@ -2,6 +2,8 @@ To do:
 -add comments to code
 -clean up code
 
+Cards are not responsive
+
 >If Upvote - the back button doesn't work properly
 
 >filters - alphabetical order prioritizes capital letters

@@ -1,5 +1,13 @@
 
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
+  main {
+    flex: 1 0 auto;
+  }
 
 /* Search Section */
 .search-section {
@@ -40,7 +48,8 @@ padding: 5px;
 .filter-btns-section {
     display: flex;
     padding: 45px 40px 65px 40px;
-
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 /* Hide Score section when submitting a new word */
@@ -73,8 +82,41 @@ display: none;
 .card .card-content p {
    margin-bottom: 10px;
 }
-
+/*
 .word-card:hover {
-   /* offset-x | offset-y | blur-radius | spread-radius | color */
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+*/
+
+.card-action{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Manage Word */
+
+.manage-btns{
+display: flex;
+justify-content: center;
+}
+
+.manage-btn {
+    margin-right: 25px;
+    width: 140px;
+}
+
+/* Footer */
+.page-footer {
+    padding-bottom: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .filter-btn{
+margin-bottom: 10px;
+    }
+    .filter-btns-section{
+        text-align: center;
+        padding: 8px;
+    }
 }
