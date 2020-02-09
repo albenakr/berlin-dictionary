@@ -19,13 +19,12 @@ mongo = PyMongo(app)
 @app.route('/get_words')
 def get_words():
     return render_template("words.html", words=mongo.db.words.find())
-    #return render_template("words.html", words=[])#mongo.db.words.find())
+    #return render_template("words.html", words=[])
 
 @app.route('/high_score_words')
 def high_score_words():
     return render_template("highscorewords.html", popular_words=mongo.db.words.find({'score': {'$gt': 5}}))
     
-
 @app.route('/score_rank')
 def score_rank():
     return render_template("scorerank.html", ranked_words = mongo.db.words.find().sort('score', DESCENDING))
@@ -46,13 +45,10 @@ def insert_word():
     req = request.form.to_dict()
     examples = req['example']
     req['example'] = examples.split('/')
-
     score = req['score']
     req['score'] = int(score)
-
     if req['author'] == "":
         req['author'] = "Anonymous"
-
     words.insert_one(req)
     return render_template('wordadded.html')
 
@@ -87,7 +83,6 @@ def upvote_word(word_id):
     the_word['score'] = the_word['score'] + 1
     words.replace_one(the_id, the_word)
     return redirect(url_for('manage_word', word_id=the_word['_id']))
-
 
 
 @app.route('/delete_word/<word_id>')

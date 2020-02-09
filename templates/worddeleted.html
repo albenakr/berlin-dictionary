@@ -1,11 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 
-<h5>You have successfully deleted this word.</h5>
+<!--  Landing Page for when a user deletes a word-->
 
-<div class="col s4">
+<div class="container explanation-paragraph">
+	<h5>You have successfully deleted this word.</h5>
+</div>
+<div class="action-btn">
 	<a href="{{ url_for('get_words') }}" class="waves-effect waves-light btn">Browse
 		Words</a>
-
 </div>
+
+
 
 {% endblock %}

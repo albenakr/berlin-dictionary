@@ -2,7 +2,7 @@ To do:
 -add comments to code
 -clean up code
 
-Cards are not responsive
+Buttons in Manage word on very small mobile
 
 >If Upvote - the back button doesn't work properly
 

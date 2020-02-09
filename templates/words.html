@@ -1,53 +1,40 @@
 {% extends 'base.html' %} {% block content %}
 
+<!--  Page Title -->
+
+<div class="page-title">
+	<h4> Browse Words </h4>
+</div>
+
 <!-- Search Bar Section  -->
 
-<!--
-<div class="nav-wrapper row search-section">
+
+<div class="nav-wrapper row search-section ">
 	<form action="{{url_for('search', query=input)}}">
-		<div class="input-field col m10 search-bar">
+		<div class="input-field search-bar hoverable">
 			<input id="search_query" name="search_query" type="search" placeholder="Find a word" required>
 			<label class="label-icon search-icon" for="search"><i class="material-icons">search</i></label>
 		</div>
-		<div class="col m2 ">
-			<button class="btn waves-effect waves-light search-button" type="submit" name="action">Submit</button>
-		</div>
 	</form>
 </div>
- -->
-
-<nav>
-	<div class="nav-wrapper row">
-		<form action="{{url_for('search', query=input)}}">
-			<div class="input-field col s7">
-				<input id="search_query" name="search_query" type="search" required>
-				<label for="search"><i class="material-icons">search</i></label>
-			</div>
-			
-		</form>
-	</div>
-</nav>
 
 
 <!-- Filters Section  -->
 <div class="container-fluid" id="filters-section">
-
-
-
 	<div class="row filter-btns-section">
 		<div class="col s12 m3">
-			<h4>Filters: </h4>
+			<h5>Filters: </h5>
 		</div>
 		<div class="col s12 m3">
 			<form action="{{ url_for('alphabetical_order') }}">
 
-				<button class="btn waves-effect waves-light filter-btn" name="action">Alphabetical Order</button>
+				<button class="btn waves-effect waves-light filter-btn" name="action">Alphabetical</button>
 			</form>
 		</div>
 		<div class="col s12 m3">
 			<form action="{{ url_for('high_score_words') }}">
 
-				<button class="btn waves-effect waves-light filter-btn" name="action">Popular Words</button>
+				<button class="btn waves-effect waves-light filter-btn" name="action">Popular</button>
 			</form>
 		</div>
 		<div class="col s12 m3">
@@ -68,44 +55,41 @@
 
 	{% for word in words %}
 
-
-
 	<div class="row">
 		<a href="{{ url_for('manage_word', word_id=word._id)}}">
-
 			<div class="col s12 word-card">
-				<div class="card blue-grey darken-1 hoverable">
-					<div class="card-content white-text ">
-						<span class="card-title"><strong>{{ word.word }}</strong></span>
-						<p>{{ word.definition }}</p>
+				<div class="card blue-grey darken-1 hoverable black-background-color">
+					<div class="card-content black-background-color">
+						<span class="card-title purple-text-color"><strong>{{ word.word }}</strong></span>
+						<p class="white-text">{{ word.definition }}</p>
+						<p class="white-text"><u>Examples: </u></p>
 						{% for example in word.example %}
-						<p><em>{{ example }}</em></p>
+						<p class="white-text"><em>{{ example }}</em></p>
 						{% endfor %}
-						<p>{{ word.author }}</p>
+						<p class="white-text right-align">- {{ word.author }}</p>
 					</div>
-					<div class="card-action">
-						<h7 id='display-score'>Score: {{ word.score }} </h7>
+					<div class="card-action black-background-color">
+						<h6 id='display-score'>Score: {{ word.score }} </h6>
 					</div>
 				</div>
 			</div>
 		</a>
-
 	</div>
 
 
 	{% endfor %}
 
+	<!-- If there are no words in the database  -->
+
 	{% else %}
-
-	<p> Sorry, there are no words currently in the dictionary. Would you like to add one? </p>
-
-	<div class="col s4">
+	<div class="container explanation-paragraph">
+		<p> There are no words in the dictionary. Would you like to add one? </p>
+	</div>
+	<div class="action-btn">
 		<a href="{{ url_for('add_word') }}"
 			class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Add
 			Word</a>
-
 	</div>
-
 	{% endif %}
 </div>
 

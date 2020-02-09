@@ -1,45 +1,42 @@
 {% extends 'base.html' %} {% block content %}
 
+<!-- Page Title  -->
+
+<div class="page-title">
+	<h4> Your Search Results </h4>
+</div>
+
 {% if db_results != [] %}
 
+<!-- Explanation Paragraph  -->
+
+<div class="container explanation-paragraph">
+	<p>Click on the word to edit, delete, share or upvote.</p>
+</div>
+
 {% for result in db_results %}
-
 <div class="container">
-
-
-	<a href="{{ url_for('manage_word', word_id=result._id)}}">
-
-		<div class="row">
-			<div class="col s12 m6">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title"><strong>{{ result.word }}</strong></span>
-						<p>{{ result.definition }}</p>
+	<div class="row">
+		<a href="{{ url_for('manage_word', word_id=result._id)}}">
+			<div class="col s12 word-card">
+				<div class="card blue-grey darken-1 hoverable black-background-color">
+					<div class="card-content black-background-color">
+						<span class="card-title purple-text-color"><strong>{{ result.word }}</strong></span>
+						<p class="white-text">{{ result.definition }}</p>
+						<p class="white-text"><u>Examples: </u></p>
 						{% for example in result.example %}
-						<p><em>{{ example }}</em></p>
+						<p class="white-text"><em>{{ example }}</em></p>
 						{% endfor %}
-
-
-						<p>{{ result.author }}</p>
+						<p class="white-text right-align">- {{ result.author }}</p>
 					</div>
-					<div class="card-action">
-						<h7 id='display-score'>Score: {{ result.score }} </h7>
-
-
-						<form action="{{ url_for('upvote_word', word_id=result._id) }}" method="POST">
-
-							<button class="waves-effect waves-purple btn-small" id="upvote-btn" type="submit" onclick="updateDisplayedScore()">Upvote
-								<i class="material-icons prefix">thumb_up</i></button>
-						</form>
-
+					<div class="card-action black-background-color">
+						<h6 id='display-score'>Score: {{ result.score }} </h6>
 					</div>
 				</div>
 			</div>
-		</div>
-	</a>
-
+		</a>
+	</div>
 </div>
-
 
 
 <script>
@@ -52,11 +49,13 @@
 </script>
 {% endfor %}
 
+<!-- If the word doesn't exist in the database  -->
+
 {% else %}
-
-<p> Sorry, this word doesn't exist in the dictionary. Would you like to add it? </p>
-
-<div class="col s4">
+<div class="container explanation-paragraph">
+	<p> Sorry, this word doesn't exist in the dictionary. Would you like to add it? </p>
+</div>
+<div class="action-btn">
 	<a href="{{ url_for('add_word') }}" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Add
 		Word</a>
 

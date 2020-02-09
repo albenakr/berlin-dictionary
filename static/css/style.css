@@ -1,19 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400,500,600,700&display=swap');
 
   body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Source Sans Pro', sans-serif;
+
   }
 
   main {
     flex: 1 0 auto;
   }
 
+
+  /* Colours */
+.black-background-color {
+background-color: #212121;
+}
+
+.purple-text-color {
+    color:#8b00dd;
+    }
+
+/* Buttons */
+
+.btn {
+    background-color: #8b00dd;
+}
+
+.btn:hover {
+    background-color: #204ebe;
+}
+
+.action-btn{
+    text-align: center;
+}
+
+/* Novigation */
+#mobile-demo{
+    background-color: #212121;
+}
+
+.sidenav li>a {
+    color: #ffffff;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 58px;
+    padding: 0px 32px;
+}
+
+.sidenav li>a:hover {
+    color: #212121;
+    background-color: #ffffff;
+    font-weight: 500;
+
+}
+
 /* Search Section */
 .search-section {
 margin: 50px;
 align-items: center;
 justify-content: center;
+background: #8b00dd;
 }
 
 .search-bar {
@@ -39,6 +89,12 @@ padding: 0px;
 width: 150px;
 height: 40px;
 padding: 5px;
+background-color: #204ebe;
+}
+
+.filter-btn:hover{
+    background-color: #8b00dd;
+
 }
 
 #filters-section{
@@ -52,13 +108,13 @@ padding: 5px;
     align-items: center;
 }
 
-/* Hide Score section when submitting a new word */
+/* Hide Score section when submitting a new word - it gets submitted with the rest of the form without uder input */
 
 .hide-score {
 display: none;
 }
 
-/* Back to Top Button */
+/* Back to Top Button - from W3schools - link to original code in ReadMe > Acknowledgements*/
 
 #topBtn {
   display: none;
@@ -69,40 +125,57 @@ display: none;
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: red;
+  background-color: #8b00dd;
   color: white;
   cursor: pointer;
   padding: 15px;
   border-radius: 4px;
 }
 
-/* Word Card */
 
+/* Word Card */
 
 .card .card-content p {
    margin-bottom: 10px;
 }
-/*
-.word-card:hover {
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-*/
+
 
 .card-action{
     display: flex;
     justify-content: space-around;
+    color: #8b00dd;
+    font-weight: 800;
+    font-size: 18px;
 }
+
+.card .card-action {
+        background-color: #212121;
+
+}
+
 
 /* Manage Word */
 
 .manage-btns{
-display: flex;
-justify-content: center;
+text-align: center;
+
 }
 
-.manage-btn {
-    margin-right: 25px;
-    width: 140px;
+/* Page Title and Explanation paragraphs across pages*/
+
+  .page-title {
+    text-align: center;
+    
+  }
+
+  h4 {
+      font-weight: 600;
+  }
+
+.explanation-paragraph{
+    text-align: center;
+    margin-top: 45px;
+    font-size: 1.2em;
 }
 
 /* Footer */
@@ -120,3 +193,15 @@ margin-bottom: 10px;
         padding: 8px;
     }
 }
+
+@media (max-width: 400px) {
+    nav .brand-logo {
+        font-size: 18px;
+    }
+  }
+
+@media (min-width: 401px) and (max-width: 550px) {
+    nav .brand-logo {
+        font-size: 22px;
+    }
+  }

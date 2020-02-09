@@ -14,11 +14,13 @@
 
 	<header>
 		<nav>
-			<div class="nav-wrapper">
+			<!-- Web Navbar  -->
+			<div class="nav-wrapper black-background-color">
 				<a href="{{url_for('get_words')}}" class="brand-logo">The Berlin Dictionary</a>
 				<a href="{{url_for('get_words')}}" data-target="mobile-demo"
 					class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
+				<!-- Mobile Navbar  -->
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="{{url_for('get_words')}}">Browse Words</a></li>
 
@@ -28,27 +30,30 @@
 
 				<ul class="sidenav" id="mobile-demo">
 					<li><a href="{{url_for('get_words')}}">Browse Words</a></li>
-
 					<li><a href="{{url_for('add_word')}}">Add Word</a></li>
 					<li><a href="{{url_for('manage_words_page')}}">Manage Words</a></li>
 				</ul>
-
 			</div>
 		</nav>
-
-
 	</header>
+
+	<!-- Body - extended through other templates  -->
+
 	<main>
 		{% block content %}
 
 		{% endblock %}
 	</main>
 
-	<footer class="page-footer footer-copyright">
-			<div class="container">
-				© 2020 The Berlin Dictionary
-			</div>
+	<!-- Footer  -->
+
+	<footer class="page-footer footer-copyright black-background-color">
+		<div class="container">
+			© 2020 The Berlin Dictionary
+		</div>
 	</footer>
+
+	<!-- Jquery and JS  -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"
 		integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
@@ -66,8 +71,6 @@
        $('#textarea1').val('New Text');
   M.textareaAutoResize($('#textarea1'));
 
-  //Go back to Top Button
-//Get the button
 var mybutton = document.getElementById("topBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
@@ -86,10 +89,7 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
-  
-
-	</script>
+</script>
 
 </body>
 

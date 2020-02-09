@@ -1,19 +1,25 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Page Title  -->
 
-<h3> Manage Words </h3>
+<div class="page-title">
+<h4> Manage Words </h4>
+</div>
 
-<h5>Find the word you're looking for and click on it to edit, delete, share or upvote.</h5>
+<!-- Explanation Paragraph  -->
 
-<div class="nav-wrapper row search-section">
+<div class="container explanation-paragraph">
+<p>Find the word you're looking for and click on it to edit, delete, share or upvote.</p>
+</div>
+
+<!-- Search Bar Section  -->
+
+
+<div class="nav-wrapper row search-section ">
 	<form action="{{url_for('search', query=input)}}">
-			<div class="input-field col m10 search-bar">
-				<input id="search_query" name="search_query" type="search" required>
-				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-				<i class="material-icons">close</i>
-			</div>
-			<div class="col m2 search-button">
-				<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-			</div>
+		<div class="input-field search-bar hoverable">
+			<input id="search_query" name="search_query" type="search" placeholder="Find a word" required>
+			<label class="label-icon search-icon" for="search"><i class="material-icons">search</i></label>
+		</div>
 	</form>
 </div>
 
