@@ -158,8 +158,12 @@ display: none;
 
 .manage-btns{
 text-align: center;
-
 }
+
+.manage-btn-mobile {
+    width: 50px;
+}
+
 
 /* Page Title and Explanation paragraphs across pages*/
 
@@ -205,3 +209,16 @@ margin-bottom: 10px;
         font-size: 22px;
     }
   }
+
+@media (min-width: 500px) {
+    .btns-mobile {
+        display: none;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .btns-web {
+        display: none;
+    }
+}

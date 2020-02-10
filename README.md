@@ -1,7 +1,3 @@
-To fix:
-Buttons in Manage word on very small mobile
-Expand on tech in Tech section
-
 
  # The Berlin Dictionary
 
@@ -75,7 +71,6 @@ In this section, you should mention all of the languages, frameworks, libraries,
 HTML
 CSS
 JQuery
-[jQuery](https://en.wikipedia.org/wiki/Z)
 Materialize 
 Javascript
 Git
@@ -110,10 +105,10 @@ Details on the testing can be seen in the 'tests.txt' file within the 'tests' fo
 Project was developed on Gitpod, using Git and Github for version control.
 1. Set up a new repository on Github.
 2. In order to be able to link to MongoDB, in the new repository on *Github* create:
-    1. Create a .gitpod.dockerfile with the following content: FROM gitpod/workspace-mongodb
+    1. Create a .gitpod.dockerfile with the following content: `FROM gitpod/workspace-mongodb`
     2. Create a file and .gitpod.yml with the following content: 
-    image:
-  file: .gitpod.dockerfile
+    `image: 
+  file: .gitpod.dockerfile`
 3. Link this repository to a workspace on Github.
 4. Create a file named env.py in the root directory of your project. This is the file you will use to define your environment variables.
 5. Create a file named .gitignore in the root directory of the project.
