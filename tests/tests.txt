@@ -1,0 +1,39 @@
+1. Browse Words
+    1. Load the Berlin Dictionary Page
+    2. Verify all sections are displaying correctly, including search, filters and words.
+    3. Verify all word cards are displaying all fields (word, definition, examples, author, score) in a correct manner.
+2. Filters
+    1. Click on 'alphabetical' filer button and verify the words are re-arranged in an alphabetical order.
+    2. Click on the 'Popular' filter button and verify only words with a score of 5 or higher are displaying.
+    3. Click on the 'Rank by Score' filter button and verify words are re-arranged by score, in a descending order.
+3. Search 
+    1. Type an existing word to verify the word is displayed.
+    2. Type a word with multiple entries to verify all entries are displayed separately. 
+    3. Type a word that doesn't exist to make sure the message informing the user the word isn't in the dictionary is displayed.
+    4. If the 'word doesn't exist' message is displaying correct, there will be an 'Add Word' button, redirecting to the 'Add Word' page - click this button to make sure it redirects as expected.
+4. Add Word
+    1. Submit a word an empty 'Word' field to make sure an error message about the required fields appears.
+    2. Submit a word an empty 'Definition' field to make sure an error message about the required fields appears.
+    3. Submit a word with multiple examples using '/' and verify in the database and 'Browse Words' they are submitted and appearing correctly.
+    4. Submit a word without an author to verify the word is saved with 'Anonymous' as author. 
+    5. Submit a word with all fields completed and verify they're all saved correctly in the database.
+    6. Once the word is added, a prompt to 'Browse Words' should appear - click on the button to make sure it redirects to the correct page.
+
+5. Manage Words Page
+    1. Repeat Search testing above to make sure it works on this page as well as expected.
+6. Upvote
+    1. Click on the upvote button to verify the score is incremented by 1.
+7. Delete
+    1. Delete a word. Verify it's deleted in the database. Verify it no longer appears on the 'Browse Words' page or if searched. Verify the message 'You have successfully deleted this word' appears as expected.
+8. Edit
+    1. Click on the Edit button and verify the edit form appears correctly with all the forms filled in with the chosen word.
+    2. Submit a word an empty 'Word' field to make sure an error message about the required fields appears.
+    3. Submit a word an empty 'Definition' field to make sure an error message about the required fields appears.
+    4. Submit a word with multiple examples using '/' and verify in the database and 'Browse Words' they are submitted and appearing correctly.
+    5. Edit a word with a score different from 0 and verify that the updated word's score is reset to 0.
+    6. Submit a word with all fields completed and verify they're all updated correctly in the database.
+    7. Once the edited word is submitted, a prompt to 'Browse Words' should appear - click on the button to make sure it redirects to the correct page.
+9. Share 
+    1. Click on the Share button to verify the modal appears.
+    2. Click on the 'Copy' button to verify it will change to 'Copied'
+    3. Paste the copied link into a web browser to make sure it's correct and working.

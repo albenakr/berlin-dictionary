@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_words')
 def get_words():
-    return render_template("words.html", words=mongo.db.words.find())
+    return render_template("words.html", words=list(mongo.db.words.find()))
     #return render_template("words.html", words=[])
 
 @app.route('/high_score_words')
