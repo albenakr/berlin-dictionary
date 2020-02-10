@@ -1,4 +1,3 @@
-
  # The Berlin Dictionary
 
 This project was created for educational purposes as part of the CodeInstitute Fullstack development bootcamp with the goal to showcast my understanding and skills with databases and CRUD.
@@ -66,19 +65,28 @@ The python backend code for all functionality is within the app.py file. All HTM
 
 ## Technologies Used
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
-HTML
-CSS
-JQuery
-Materialize 
-Javascript
-Git
-Github
-Python
-Flask 
-Flask-PyMongo
-MongoDB Atlas
+* HTML
+    * HTML was used for template structure
+* CSS
+    * CSS was used for custom styling
+* JQuery
+    * JQuery was used to access the DOM
+* Materialize 
+    * Materialize was used for most of the page elements and basic styling, including the navbar, words cards, input forms, buttons, icons etc.
+* Javascript
+    * JS was used with some of the materialize elements, as well as for EventListeners.
+* Git
+    * Git was used for version control.
+* Github
+    * Github was used as storage and way of sharing the source code.
+* Python
+    * Most of the backend functionality was build in Python.
+* Flask 
+    * Flask was used to build routes and render pages.
+* Flask-PyMongo
+    * Flask-Pymongo was used as a convenient way to use Flask and MongoDB and easily implement CRUD functionality.
+* MongoDB Atlas
+    * Database storage.
 
 ## Testing
 
@@ -90,76 +98,62 @@ For Browser compatibility, it was tested on Chrome and Microsoft Edge.
 
 For responsiveness it was tested through the Dev Tools on the available sizes - browser view, Galaxy S5, Pixel 2, Pixel 2 XL, iPhone 5, 6, 7, 8, 8Plus, X, iPad, iPad Pro. It was additionally tested on one mobile device.
 
-The only functionality, which was tested programmatically was the case in which all words are deleted from the database. This was tested through changing the original function in app.py to feed an empty list to the template. It correctly rendered the else statement.
-@app.route('/')
-@app.route('/get_words')
-def get_words():
-    return render_template("words.html", words=[])
-
 Details on the testing can be seen in the 'tests.txt' file within the 'tests' folder of this project.
 
 
 ## Deployment
 
 ### Running the code locally 
-Project was developed on Gitpod, using Git and Github for version control.
-1. Set up a new repository on Github.
-2. In order to be able to link to MongoDB, in the new repository on *Github* create:
-    1. Create a .gitpod.dockerfile with the following content: `FROM gitpod/workspace-mongodb`
-    2. Create a file and .gitpod.yml with the following content: 
-    `image: 
-  file: .gitpod.dockerfile`
-3. Link this repository to a workspace on Github.
-4. Create a file named env.py in the root directory of your project. This is the file you will use to define your environment variables.
+Project was developed on Gitpod, using Git and Github for version control. Pip and Python are required.
+1. Copy the project file from [the Github repository]('https://github.com/albenakr/berlin-dictionary') 
+4. Create a file named env.py in the root directory of the project to use to define the environment variables.
 5. Create a file named .gitignore in the root directory of the project.
-6. In the .gitignore file add the following text to it: env.py 
-7. In the env.py file, import os so that you can set the environment variables in the operating system. Once you have added the line “import os” underneath you can assign your environment variables using the following syntax: 
-os.environ["Variable Name Here"] = "Value of Variable Goes Here" 
-Example: os.environ["SECRET_KEY"] = "ohsosecret"
-8. Then the following code imports this new env.py file where you need to use your environment variables. For example your app.py file for flask project or settings.py file for Django project. Add this under your other imports at the top of the file. 
+6. In the .gitignore file add the following text to it: `env.py` 
+7. In the env.py file, import os so that you can set the environment variables in the operating system and assign the environment variables, in this case Mongo URI: 
+```
+import os
+
+os.environ["MONGO_URI"] = "mongodb+srv://<username>:<password>@<cluster_name>-z5lfd.mongodb.net/<database_name>?retryWrites=true&w=majority"
+
+```
+8. Then use the following code to import this new env.py file in the app.py file. Add this under your other imports at the top of the file. 
+```
 from os import path
 if path.exists("env.py"):
-  import env 
+  import env
+```
 The if statement here is so that the env.py file is only pulled when working on your code in your workspace, not when it is deployed on heroku. For deployment you can set your environment variables in the heroku dashboard in settings > config vars.
 9. Now that your environment variables have been set in your env.py file, and the file has been imported into your project, you can use them as needed using the following syntax: 
-SECRET_KEY = os.environ.get('SECRET_KEY') 
-Make sure you save all your files before testing if it works.
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+10. Make sure you save all your files before testing if it works.
 
 
 ### Heroku Deployment
-1. Install Heroku with the following command: npm install -g heroku
-2. Login to Heroku by using the following command: heroku login
-3. Associate the Heroku application as our master branch, or remote master branch. Command: Heroku git:remote {name of the app on heroku}
-4. Create a requirements.txt file. Command: pip3 freeze --local > requirements.txt
-5. Create a Procfile: echo web python3 {app.py or name of python file} > Procfile
+1. Install Heroku with the following command: `npm install -g heroku`
+2. Login to Heroku by using the following command: `heroku login`
+3. Associate the Heroku application as our master branch, or remote master branch. Command: `Heroku git:remote {name of the app on heroku}`
+4. Create a requirements.txt file. Command: `pip3 freeze --local > requirements.txt`
+5. Create a Procfile: `echo web python3 {app.py or name of python file} > Procfile`
 6. Add and commit to Git.
-7. Push to Heroku. Command: git push heroku master
+7. Push to Heroku. Command: `git push heroku master`
 8. Set up Configuration variables in Heroku:
     - IP: 0.0.0.0
     - PORT: 8080
     - MONGO_URI: mongodb+srv://<username>:<password>@<cluster_name>-z5lfd.mongodb.net/<database_name>?retryWrites=true&w=majority
 
-
-
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
+9. You can see the live app here: https://berlin-dictionary.herokuapp.com/
 
 
 ## Credits
 
 ### Content
 - All content was custom created for this app.
+- Some of the content of the deployment write-up was taken from the lectures or Slack channel support, as those were the instructions I followed.
 
 ### Acknowledgements
 
 - Back to Top button was taken from this W3Schools example: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 
-- The structure and approach to CRUD functionality with MongoDB was very much inspired from the CodeInstitute lectures.
+- The structure and approach to CRUD functionality with MongoDB was inspired from the CodeInstitute mini-project examples.
 
 - Research into websites such as https://www.urbandictionary.com/ was used in defining the concept and approach to the webpage.

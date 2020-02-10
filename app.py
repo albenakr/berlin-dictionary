@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, make_response
+from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo, DESCENDING
 from bson.objectid import ObjectId
 
@@ -19,7 +19,6 @@ mongo = PyMongo(app)
 @app.route('/get_words')
 def get_words():
     return render_template("words.html", words=list(mongo.db.words.find()))
-    #return render_template("words.html", words=[])
 
 @app.route('/high_score_words')
 def high_score_words():
