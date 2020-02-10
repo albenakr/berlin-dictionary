@@ -106,6 +106,46 @@ Details on the testing can be seen in the 'tests.txt' file within the 'tests' fo
 
 ## Deployment
 
+### Running the code locally 
+Project was developed on Gitpod, using Git and Github for version control.
+1. Set up a new repository on Github.
+2. In order to be able to link to MongoDB, in the new repository on *Github* create:
+    1. Create a .gitpod.dockerfile with the following content: FROM gitpod/workspace-mongodb
+    2. Create a file and .gitpod.yml with the following content: 
+    image:
+  file: .gitpod.dockerfile
+3. Link this repository to a workspace on Github.
+4. Create a file named env.py in the root directory of your project. This is the file you will use to define your environment variables.
+5. Create a file named .gitignore in the root directory of the project.
+6. In the .gitignore file add the following text to it: env.py 
+7. In the env.py file, import os so that you can set the environment variables in the operating system. Once you have added the line “import os” underneath you can assign your environment variables using the following syntax: 
+os.environ["Variable Name Here"] = "Value of Variable Goes Here" 
+Example: os.environ["SECRET_KEY"] = "ohsosecret"
+8. Then the following code imports this new env.py file where you need to use your environment variables. For example your app.py file for flask project or settings.py file for Django project. Add this under your other imports at the top of the file. 
+from os import path
+if path.exists("env.py"):
+  import env 
+The if statement here is so that the env.py file is only pulled when working on your code in your workspace, not when it is deployed on heroku. For deployment you can set your environment variables in the heroku dashboard in settings > config vars.
+9. Now that your environment variables have been set in your env.py file, and the file has been imported into your project, you can use them as needed using the following syntax: 
+SECRET_KEY = os.environ.get('SECRET_KEY') 
+Make sure you save all your files before testing if it works.
+
+
+### Heroku Deployment
+1. Install Heroku with the following command: npm install -g heroku
+2. Login to Heroku by using the following command: heroku login
+3. Associate the Heroku application as our master branch, or remote master branch. Command: Heroku git:remote {name of the app on heroku}
+4. Create a requirements.txt file. Command: pip3 freeze --local > requirements.txt
+5. Create a Procfile: echo web python3 {app.py or name of python file} > Procfile
+6. Add and commit to Git.
+7. Push to Heroku. Command: git push heroku master
+8. Set up Configuration variables in Heroku:
+    - IP: 0.0.0.0
+    - PORT: 8080
+    - MONGO_URI: mongodb+srv://<username>:<password>@<cluster_name>-z5lfd.mongodb.net/<database_name>?retryWrites=true&w=majority
+
+
+
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
 
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
